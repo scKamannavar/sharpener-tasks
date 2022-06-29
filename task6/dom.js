@@ -1,6 +1,9 @@
-let x2 =  document.querySelector('.list-group-item:nth-child(2)');
-x2.style.color = 'green';
+let x2 =  document.querySelectorAll('.list-group-item:nth-child(2)');
+x2[0].style.color = 'green';
 
-let x3 =  document.querySelector('.list-group-item:nth-child(3)');
-x3.style.color = 'white';
-// x3.style.display = 'none';
+let xOdd =  document.querySelectorAll('.list-group-item:nth-child(odd)');
+// console.log(xOdd);
+for (let i = 0; i<xOdd.length; i++)
+{
+    xOdd[i].style.backgroundColor = 'green';
+}
