@@ -16,3 +16,4 @@ y.nextSibling.style.backgroundColor =  'black';
 
 y.nextElementSibling.style.color =  'white';
 
+x.previousSibling.style.color = 'yellow';
