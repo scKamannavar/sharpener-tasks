@@ -19,3 +19,14 @@ y.nextElementSibling.style.color =  'white';
 x.previousSibling.style.color = 'yellow';
 
 x.previousElementSibling.style.fontWeight= 'bold';
+
+
+
+var newli = document.createElement("div");
+newli.className = "list-group-item";
+newli.setAttribute('title','testing');
+let newliText = document.createTextNode('New item Added');
+newli.appendChild(newliText);
+
+console.log(newli);
+x.insertBefore(newli,x.lastElementChild);
