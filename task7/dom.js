@@ -14,3 +14,5 @@ x.firstElementChild.style.backgroundColor =  'lightBlue';
 let y = document.querySelector('li');
 y.nextSibling.style.backgroundColor =  'black';
 
+y.nextElementSibling.style.color =  'white';
+
