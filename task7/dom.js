@@ -1,32 +1,20 @@
 let x = document.querySelector('#items');
-// console.log(x.parentElement);
-x.parentElement.style.backgroundColor = 'lightGrey';
 
-x.lastElementChild.style.backgroundColor =  'lightBlue';
-
-x.firstChild.style.backgroundColor =  'lightBlue';
-// console.log(x.lastChild);
-
-x.lastChild.style.color =  'white';
-
-x.firstElementChild.style.backgroundColor =  'lightBlue';
-
-let y = document.querySelector('li');
-y.nextSibling.style.backgroundColor =  'black';
-
-y.nextElementSibling.style.color =  'white';
-
-x.previousSibling.style.color = 'yellow';
-
-x.previousElementSibling.style.fontWeight= 'bold';
-
-
-
-var newli = document.createElement("div");
+let newli = document.createElement("div");
 newli.className = "list-group-item";
 newli.setAttribute('title','testing');
-let newliText = document.createTextNode('New item Added');
+let newliText = document.createTextNode('Hello World');
 newli.appendChild(newliText);
+x.insertBefore(newli,x.firstElementChild);
 
-console.log(newli);
-x.insertBefore(newli,x.lastElementChild);
+
+let newh1 = document.createElement("h1");
+newh1.id = 'header-title';
+let newh1text = document.createTextNode('Hello World');
+newh1.appendChild(newh1text);
+let container = document.querySelector('header .container');
+let h1 = document.querySelector('header .container h1');
+container.insertBefore(newh1,h1);
+console.log(newh1);
+
+// x.insertAdjacentElement(newli,);
