@@ -10,3 +10,7 @@ x.firstChild.style.backgroundColor =  'lightBlue';
 x.lastChild.style.color =  'white';
 
 x.firstElementChild.style.backgroundColor =  'lightBlue';
+
+let y = document.querySelector('li');
+y.nextSibling.style.backgroundColor =  'black';
+
