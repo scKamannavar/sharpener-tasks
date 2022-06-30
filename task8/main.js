@@ -1,8 +1,22 @@
 let form = document.getElementById('addForm');
 let list = document.getElementById('items');
 
-form.addEventListener('submit', addItem);
+// let del = document.getElementsByClassName('delete');
 
+form.addEventListener('submit', addItem);
+list.addEventListener('click', deleteItem);
+
+function deleteItem(e)
+{   if(e.target.classList.contains('delete') )
+    {
+        if(confirm('Are you sure?')){
+            let remli = e.target.parentElement;
+            list.removeChild(remli);
+        }
+        console.log('Fidelia');
+    }
+   
+}
 
 function addItem(e)
 {
@@ -20,5 +34,6 @@ function addItem(e)
 
     list.appendChild(li);
     console.log(li);
+
 
 }
