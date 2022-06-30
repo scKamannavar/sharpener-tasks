@@ -29,8 +29,15 @@ function addItem(e)
 
     let deletebtn = document.createElement('button');
     deletebtn.innerText = 'X';
-    deletebtn.className = 'btn btn-danger btn-sm float-right delete'
+    deletebtn.className = 'btn btn-danger btn-sm float-right delete';
+
+    let editbtn = document.createElement('button');
+    editbtn.innerText = 'Edit';
+    editbtn.className = 'btn btn-sm float-right';
+    
+    li.appendChild(editbtn);
     li.appendChild(deletebtn);
+    
 
     list.appendChild(li);
     console.log(li);
