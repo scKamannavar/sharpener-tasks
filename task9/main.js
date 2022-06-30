@@ -24,6 +24,7 @@ function addItem(e)
 {
     e.preventDefault();
     let newitem = document.getElementById('item').value;
+    let newdesc = document.getElementById('itemDesc').value;
 
     let li = document.createElement('li');
     li.className = 'list-group-item';
@@ -36,33 +37,41 @@ function addItem(e)
     let editbtn = document.createElement('button');
     editbtn.innerText = 'Edit';
     editbtn.className = 'btn btn-sm float-right';
+
+    let desc = document.createElement('p');
+    desc.innerText = newdesc;
     
     li.appendChild(editbtn);
     li.appendChild(deletebtn);
+    li.appendChild(desc);
     
 
     list.appendChild(li);
-    // console.log(li);
-
 
 }
-// let x = 'Technical';
-// console.log(x.indexOf('cal'));
+
 function filterItem(e){
     let text = e.target.value.toLowerCase();
     let itemlist  = list.getElementsByTagName('li');
-    Array.from(itemlist).forEach(function(item){
-        let itemname = item.firstChild.textContent;
+    let itemDescription  = list.getElementsByTagName('p');
+    let tempitemdesc = Array.from(itemDescription);
+    // console.log(tempitemdesc);
 
-        if(itemname.toLowerCase().indexOf(text) != -1)
+    let temp = Array.from(itemlist);
+    for(let i = 0; i<temp.length;i++)
+    {
+        let itemname = temp[i].firstChild.textContent;
+        let itemd = tempitemdesc[i].firstChild.textContent;
+        // console.log(itemname);
+        if(itemname.toLowerCase().indexOf(text) != -1 || itemd.toLowerCase().indexOf(text) != -1)
         {
-            item.style.display = 'block';
+            temp[i].style.display = 'block';
         }
         else
         {
-            item.style.display = 'none';
+            temp[i].style.display = 'none';
         }
-        // console.log(itemname);
-    } );
-    
+    }
+
+
 }
