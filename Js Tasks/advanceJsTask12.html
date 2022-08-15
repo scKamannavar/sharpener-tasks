@@ -1,0 +1,55 @@
+<script>
+ 'use strict';
+
+class student{
+    
+    constructor(name, age, phno, marks){
+        this.name = name;
+        this.age = age;
+        this.phno = phno;
+        this.marks = marks;
+        this.eligible;
+        student.count++;
+    }
+    eligiblity = function (){
+        if(this.marks > 40){
+            this.eligible = 'Eligible';
+            console.log( this.eligible);
+        }
+        else
+        {
+            this.eligible = 'Not Eligible';
+            console.log( this.eligible);
+        }
+    }
+    
+    placements = function(){
+        let mark = this.marks;
+        if(this.marks < 40)
+            return ()=>{};
+        else
+        return () => {
+                if(this.age > 20)
+                {   console.log(this.name);
+                    return true;
+                }
+            }
+
+    }
+
+}
+
+const stu1 = new student('sagar', 24, 12345678, 44);
+const stu2 = new student('shahid', 26, 12345678, 30);
+const stu3 = new student('rehan', 24, 12345678, 66);
+const stu4 = new student('manjya', 28, 12345678, 20);
+const stu5 = new student('pankya', 30, 12345678, 86);
+
+
+console.log('Students Eligible for Placements')
+stu1.placements()();
+stu2.placements()();
+stu3.placements()();
+stu4.placements()();
+stu5.placements()();
+</script>
