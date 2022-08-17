@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>3 Hour JS Project</title>
+        <style>
+            #expenseform {
+            padding: 2rem;
+            background: #f4f4f4;
+            width: 500px;
+            }
+
+            #expenseform label {
+            display: block;
+            }
+            #expenseform input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            }            
+        </style>
+    </head>
+    <body>
+        <Div>
+            <form method="post" id = 'expenseform' >
+                <Label>Expense amount</Label>
+                <Input type = 'number' id="amount"><br>
+                <Label>Description</Label>
+                <textarea  id="desc"></textarea>
+                    <br>     
+                <Label>Category</Label>
+                <select name="cars" id="category">
+                    <option value="" selected> </option>
+                    <option value="Movie">Movie</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Electricity">Electricity</option>
+                    <option value="Breakfast">Breakfast</option>
+                </select> <br>
+                <input class="btn" type="submit" value="Submit"> 
+            </form>
+            <ul id="expenselist">
+
+            </ul>
+        </Div>
+    </body>
+</html>
+
+<script>
+    const btn = document.querySelector('.btn');
+    const form = document.getElementById('expenseform');
+    const expenseamount = document.getElementById('amount');
+    const desc = document.getElementById('desc');
+    const cat = document.getElementById('category');
+
+
+    let userArr = [];
+
+    form.addEventListener('submit',(e)=>{
+    // e.preventDefault();
+
+
+    if(expenseamount.value === '' || desc.value === '' || cat.value === '')
+    {
+        alert('Please enter values');
+    }else{
+        const d = new Date();
+        let ms = d.valueOf();
+        let userObj = {
+            'amount' : expenseamount.value,
+            'description' : desc.value,
+            'category' : cat.value,
+            'id' : ms
+        };
+
+
+        userArr.push(userObj);
+        console.log(userArr);
+        localStorage.setItem('expense'+ms,JSON.stringify(userArr));
+        }
+    });
+
+
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+
+        for(let i = 0; i <= localStorage.length-1; i++)
+        {
+        let x = localStorage.key(i);
+        let y = JSON.parse(localStorage.getItem(x));
+        console.log(y[0]);
+
+        createAndAppendUserList(y[0]);
+        }
+    });
+
+function createAndAppendUserList(exarg){
+    let li = document.createElement('li');
+    li.setAttribute('expenseid',exarg.id);
+    li.className = 'item';
+    li.innerText = exarg.amount + '  -  ' + exarg.description+'  -  '+exarg.category;
+    let editbtn = document.createElement('button');
+    editbtn.innerText = 'Edit';
+    editbtn.className = 'edit';
+    let deletebtn = document.createElement('button');
+    deletebtn.innerText = 'Delete';
+    deletebtn.className = 'delete';
+    li.appendChild(deletebtn);
+    li.appendChild(editbtn);
+    expenselist.appendChild(li);
+
+}
+
+expenselist.addEventListener('click', deleteexpense);
+expenselist.addEventListener('click', editexpense);
+
+function deleteexpense(e)
+{
+    if(e.target.classList.contains('delete') )
+  {
+    let remli = e.target.parentElement;
+    expenselist.removeChild(remli);
+    let temexpid = remli.getAttribute('expenseid');
+    let abc = 'expense'+temexpid;
+
+  console.log(remli.getAttribute('expenseid')+' User Deleted');
+  localStorage.removeItem(abc);
+  }
+
+}
+
+function editexpense(e){  
+  if(e.target.classList.contains('edit') )
+  {
+    console.log('Editing');
+
+    let remli = e.target.parentElement;
+    expenselist.removeChild(remli);
+    let temexpid = remli.getAttribute('expenseid');
+    let abc = 'expense'+temexpid;
+    let userObj = localStorage.getItem(abc);
+    console.log(userObj);
+    console.log(JSON.parse(userObj)[0]);
+    let inst = JSON.parse(userObj)[0];
+    expenseamount.value = inst.amount;
+    desc.value = inst.description;
+    cat.value = inst.category;
+    localStorage.removeItem(abc);
+
+  }
+}
+
+</script>
