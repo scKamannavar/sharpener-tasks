@@ -43,16 +43,6 @@ let userlist = document.querySelector('ul');
       };
 
 
-    //   axios({
-    //     method: 'POST',
-    //     url: 'https://crudcrud.com/api/5bfa174ebb404a0dbfad390f18146b0c',
-    //     data :{
-    //       title : 'New Party Bash',
-    //       completed : false
-    //     }
-    //   })
-    //   .then((res)=> showOutput(res))
-    //   .catch(err => console.error(err));
       axios.post("https://crudcrud.com/api/ad4af8cc0c8f49b288c8e3ae3396b521/adduser", userObj)
       .then((res)=>{
         createAndAppendUserList(res.data.name, res.data.email);
@@ -77,14 +67,26 @@ let userlist = document.querySelector('ul');
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
-  for(let i = 0; i <= localStorage.length-1; i++)
-  {
-    let x = localStorage.key(i);
-    let y = JSON.parse(localStorage.getItem(x));
-    console.log(y[0]);
-    createAndAppendUserList(`${y[0].name}`+'   '+ `${y[0].email}`,y[0].email);
+  axios.get("https://crudcrud.com/api/ad4af8cc0c8f49b288c8e3ae3396b521/adduser")
+  .then((res)=>{
+    console.log(res);
 
-  }
+    for(var i = 0; i <= res.data.length; i++)
+    {
+      createAndAppendUserList(res.data[i].name,res.data[i].email);
+    }
+  })
+  .catch((err)=>{
+    console.log(err);
+  });
+  // for(let i = 0; i <= localStorage.length-1; i++)
+  // {
+  //   let x = localStorage.key(i);
+  //   let y = JSON.parse(localStorage.getItem(x));
+  //   console.log(y[0]);
+  //   createAndAppendUserList(`${y[0].name}`+'   '+ `${y[0].email}`,y[0].email);
+
+  // }
 });
 
 function createAndAppendUserList(arg, emailarg)
