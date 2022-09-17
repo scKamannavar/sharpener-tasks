@@ -43,10 +43,9 @@ let userlist = document.querySelector('ul');
       };
 
 
-      axios.post("https://crudcrud.com/api/ad4af8cc0c8f49b288c8e3ae3396b521/adduser", userObj)
-      .then((res)=>{
-        createAndAppendUserList(res.data.name, res.data.email);
-        // console.log(res.data.name);
+    axios.post("https://crudcrud.com/api/b8747b7186664a8387a37827d22086f8/adduser", userObj)
+    .then((res)=>{
+      createAndAppendUserList(res.data.name, res.data.email);
     })
       .catch((err)=>{console.log(err)});
       
@@ -67,13 +66,13 @@ let userlist = document.querySelector('ul');
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
-  axios.get("https://crudcrud.com/api/ad4af8cc0c8f49b288c8e3ae3396b521/adduser")
+  axios.get("https://crudcrud.com/api/b8747b7186664a8387a37827d22086f8/adduser")
   .then((res)=>{
     console.log(res);
 
     for(var i = 0; i <= res.data.length; i++)
     {
-      createAndAppendUserList(res.data[i].name,res.data[i].email);
+      createAndAppendUserList(res.data[i].name, res.data[i]._id);
     }
   })
   .catch((err)=>{
@@ -89,10 +88,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   // }
 });
 
-function createAndAppendUserList(arg, emailarg)
+function createAndAppendUserList(arg, id)
 {
   let li = document.createElement('li');
-  li.setAttribute('userid','user'+emailarg);
+  li.setAttribute('userid',id);
   li.className = 'item';
   li.innerText = arg;
   let editbtn = document.createElement('button');
@@ -122,6 +121,14 @@ userlist.addEventListener('click', editUser);
     
   console.log(remli.getAttribute('userid')+' User Deleted');
   localStorage.removeItem(remli.getAttribute('userid'));
+
+  axios.delete("https://crudcrud.com/api/b8747b7186664a8387a37827d22086f8/adduser/"+remli.getAttribute('userid'))
+  .then((res)=>{
+    console.log(res);
+  })
+  .catch((err)=>{
+    console.log(err);
+  });
   }
  }
 
