@@ -140,12 +140,27 @@ userlist.addEventListener('click', editUser);
 
     let remli = e.target.parentElement;
     userlist.removeChild(remli);
-    let userObj = localStorage.getItem(remli.getAttribute('userid'));
+    // let userObj = localStorage.getItem(remli.getAttribute('userid'));
+
+    axios.get("https://crudcrud.com/api/b8747b7186664a8387a37827d22086f8/adduser/"+remli.getAttribute('userid'))
+    .then((res)=>{
+      console.log(res);
+      nameInput.value = res.data.name;
+      emailInput.value = res.data.email;
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
     // console.log(JSON.parse(userObj)[0]);
-    let inst = JSON.parse(userObj)[0];
-    nameInput.value = inst.name;
-    emailInput.value = inst.email;
-    localStorage.removeItem(remli.getAttribute('userid'));
+    // let inst = JSON.parse(userObj)[0];
+
+    axios.delete("https://crudcrud.com/api/b8747b7186664a8387a37827d22086f8/adduser/"+remli.getAttribute('userid'))
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
 
   }
  }
