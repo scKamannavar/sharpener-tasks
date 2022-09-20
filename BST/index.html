@@ -1,0 +1,107 @@
+<script>
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.right = null;
+    this.left = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+  insert(value) {
+    const newNode = new Node(value);
+    if (!this.root) {
+      this.root = newNode;
+      return this;
+    }
+    let current = this.root;
+    const rnLoop = true;
+    while (rnLoop) {
+      if (value === current.value) return undefined;
+      if (value < current.value) {
+        if (!current.left) {
+          current.left = newNode;
+          return this;
+        }
+        current = current.left;
+      } else {
+        if (!current.right) {
+          current.right = newNode;
+          return this;
+        }
+        current = current.right;
+      }
+    }
+  }
+
+  search(value) {
+    if (!this.root) return null;
+    let current = this.root;
+    const rnLoop = true;
+    while (rnLoop) {
+      if (!current) return undefined;
+      if (value === current.value) return current;
+      if (value < current.value) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+  }
+
+  preorder(node)
+{
+    if(node !== null)
+    {
+        console.log(node.value);
+        this.preorder(node.left);
+        this.preorder(node.right);
+    }
+}
+
+preorderIter(node)
+{
+   if(node === null)
+    return;
+
+    var st = [];
+    st.push(node);
+
+    
+    while(st.length)
+    {
+            var current = st.pop();
+        console.log(current.value);
+        if(current.right)
+            st.push(current.right);
+        if(current.left)
+            st.push(current.left);
+    }
+
+   
+}
+
+}
+
+let bst = new BinarySearchTree();
+    // bst.trial();
+    bst.insert(25);
+    bst.insert(10);
+    bst.insert(7);
+    bst.insert(92);
+    bst.insert(17);
+    bst.insert(88);
+    bst.insert(5);
+    bst.insert(9);
+    bst.insert(27);
+    bst.insert(15);
+
+    console.log(bst.search(10));
+    console.log('Recursive PreOredTravesrsal');
+    bst.preorder(bst.search(10));
+    console.log('Iterative PreOredTravesrsal');
+    bst.preorderIter(bst.search(92));
+</script>
