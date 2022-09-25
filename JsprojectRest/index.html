@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>3 Hour JS Project integrating REST</title>
+        <style>
+            #expenseform {
+            padding: 2rem;
+            background: #f4f4f4;
+            width: 500px;
+            }
+
+            #expenseform label {
+            display: block;
+            }
+            #expenseform input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            }            
+        </style>
+    </head>
+    <body>
+        <Div>
+            <form method="post" id = 'expenseform' >
+                <Label>Expense amount</Label>
+                <Input type = 'number' id="amount"><br>
+                <Label>Description</Label>
+                <textarea  id="desc"></textarea>
+                    <br>     
+                <Label>Category</Label>
+                <select  id="category">
+                    <option value="" selected> </option>
+                    <option value="Movie">Movie</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Electricity">Electricity</option>
+                    <option value="Breakfast">Breakfast</option>
+                </select> <br>
+                <input class="btn" type="submit" value="Submit"> 
+            </form>
+            <ul id="expenselist">
+
+            </ul>
+        </Div>
+    </body>
+</html>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="main.js">
+    
+
+</script>
