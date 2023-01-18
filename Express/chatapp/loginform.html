@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        localStorage.firstname = "Pizza";
+        localStorage.lastname = "Burger";
+        console.log('inside ion side'+localStorage.getItem('lastname'));
+
+        function myfunction(){
+            localStorage.setItem(`username`, document.getElementById(`username`).value);
+        }
+    
+    </script>
+</head>
+<body>
+    <h1>Login</h1>
+    <form  method="post" action="loginsave" onsubmit="myfunction();">
+        <input type="text" id="username" name="userid"></input>
+        <input type="submit"  value = "Submit"></input>
+    </form>
+</body>
+</html>
+
