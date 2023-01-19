@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/contactus.css">
+
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-header__nav">
+            <ul class="main-header__item-list">
+                <li class="main-header__item"><a  href="/admin/addproduct">Add Product</a></li>
+                <li class="main-header__item"><a href="/shop">Shop</a></li>
+                <li class="main-header__item"><a class="active"  href="/contactus">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <form class="product-form" action="success" method="POST">
+            <div class="form-header">
+                <div class="form-header__title">
+                    <h1 >Book a call</h1>
+                </div>
+                <div class="form-header__caption">
+                    <h4>Book a call slot and our representative will call you within 1 hr of selected time</h4>
+                </div>
+            </div>
+            <div class="form-control">
+                <label for="username">Name</label>
+                <input type="text" name="username">
+                <label for="useremail">Email ID</label>
+                <input type="text" name="useremail"></input>
+                
+            </div>
+            <button type="submit">Book a Call</button>
+           
+          </form>
+    </main>
+</body>
+</html>

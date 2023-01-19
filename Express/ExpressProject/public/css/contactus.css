@@ -1,0 +1,29 @@
+.product-form button{
+    width: 100%;
+    margin: unset;
+    height: 30px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+.form-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.form-header__title h1{
+    color: blue;
+    margin-bottom: 0px;
+}
+.form-header__caption h4{
+    color: rgb(20, 94, 20);
+    margin: 0px;
+    font-size: x-small;
+}
+
+.product-form{
+    width: 25rem;
+    border: 1px solid gainsboro;
+    padding: 10px;
+    border-radius: 20px;
+}

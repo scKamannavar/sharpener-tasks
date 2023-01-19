@@ -1,0 +1,27 @@
+.product-form{
+    /* background-color: aquamarine; */
+    width: 20rem;
+    max-width: 90%;
+    margin: auto;
+}
+.form-control{
+    margin: 1rem;
+}
+.form-control label,
+.form-control input{
+    display: block;
+    width: 100%;
+    margin: 5px;
+}
+
+.form-control input{
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: rgb(216, 206, 206);
+    height: 20px;
+}
+
+button{
+    background-color: rgb(90, 145, 207);
+    margin-left: 20px;
+}
