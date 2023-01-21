@@ -7,6 +7,9 @@ const app = express();
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
+const contactusFormRouter = require('./controllers/form');
+const successMsgRouter = require('./controllers/success')
+
 // const rootdir = require('util/path');
 
 app.use(bodyparser.urlencoded({extended:false}));
@@ -15,15 +18,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin',adminRoutes);
 app.use('/shop', shopRoutes);
 
-app.get('/contactus',(req, res, next)=>{
-    res.sendFile(path.join(__dirname ,'views', 'contactus.html'));
-});
+app.get('/contactus',contactusFormRouter.getContactusForm);
 
-app.post('/success',(req, res, next)=>{
-    console.log(req.body);
-    res.sendFile(path.join(__dirname ,'views', 'success.html'));
-
-});
+app.post('/success',successMsgRouter.successMsg);
 
 app.use((req, res, next)=>{
     res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
